@@ -1,15 +1,35 @@
- import 'dart:ui';
+import 'dart:ui';
 
 
-/// app primary color
-  const primaryColor = Color(0xff2DD9AB);
-  const lightPrimaryColor = Color(0xff57BD8A);
-  const primaryDarkColor = Color(0xff23A784);
-  const blackColor = Color(0xff212121);
-  const darkGreyColor = Color(0xff617187);
-  const greyColor = Color(0xffCDCDCD);
-  const blueColor = Color(0xff2563EB);
-  const whiteColor = Color(0xffF9FAFB);
- const shadowColor = Color(0x34000000);
+
+/// app solid color
+enum LightModeColor{
+  primary(Color(0xff2DD9AB)),
+  secondaryLight(Color(0xff57BD8A)),
+  secondaryDark(Color(0xff23A784)),
+  button(Color(0xff23A784)),
+  error(Color(0xFFFF5733)),
+  grey(Color(0xF0575555)),
+  white(Color(0xffffffff));
+
+  const LightModeColor(this.color);
+  final Color color;
+}
+
+
+/// app dark color
+enum DarkModeColor{
+  primary(Color(0xff2DD9AB)),
+  secondaryLight(Color(0xff57BD8A)),
+  secondaryDark(Color(0xff23A784)),
+  button(Color(0xff23A784)),
+  error(Color(0xFFFF5733)),
+  grey(Color(0xF0575555)),
+  white(Color(0xffffffff));
+
+  const DarkModeColor(this.color);
+  final Color color;
+}
+
 
 
