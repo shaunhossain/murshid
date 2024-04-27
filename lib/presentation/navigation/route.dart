@@ -2,12 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:murshid/presentation/navigation/page_name.dart';
+import 'package:murshid/presentation/navigation/tab_page_name.dart';
 import 'package:murshid/presentation/ui/pages/auth_page/auth_page.dart';
 import 'package:murshid/presentation/ui/pages/contact_page/contact_page.dart';
 import 'package:murshid/presentation/ui/pages/docs_page/docs_page.dart';
 import 'package:murshid/presentation/ui/pages/emergency/emergency_info_page.dart';
 import 'package:murshid/presentation/ui/pages/home_page/home_page.dart';
 import 'package:murshid/presentation/ui/pages/hotel/hotel_page.dart';
+import 'package:murshid/presentation/ui/pages/hotel/tab/madinah_tab_view.dart';
+import 'package:murshid/presentation/ui/pages/hotel/tab/mecca_tab_view.dart';
 import 'package:murshid/presentation/ui/pages/kafela_page/kafela_page.dart';
 import 'package:murshid/presentation/ui/pages/main_page.dart';
 import 'package:murshid/presentation/ui/pages/profile_page/profile_page.dart';
@@ -88,6 +91,35 @@ final GoRouter router = GoRouter(
       ],
     ),
 
+    StatefulShellRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (BuildContext context, GoRouterState state,
+          StatefulNavigationShell navigationShell) {
+        return navigationShell;
+      },
+      navigatorContainerBuilder: (BuildContext context,
+          StatefulNavigationShell navigationShell, List<Widget> children) {
+        return HotelPage(
+            navigationShell: navigationShell, children: children);
+      },
+      branches: [
+        StatefulShellBranch(routes: [
+          GoRoute(
+            path: TabPagesName.madinahTabView.path,
+            builder: (BuildContext context, GoRouterState state) =>
+            const MadinahTabView(),
+          ),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(
+            path: TabPagesName.meccaTabView.path,
+            builder: (BuildContext context, GoRouterState state) =>
+            const MeccaTabView(),
+          ),
+        ]),
+      ],
+    ),
+
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
       path: PagesName.splashPage.path,
@@ -114,13 +146,6 @@ final GoRouter router = GoRouter(
       path: PagesName.kafelaPage.path,
       builder: (BuildContext context, GoRouterState state) {
         return const KafelaPage();
-      },
-    ),
-    GoRoute(
-      parentNavigatorKey: _rootNavigatorKey,
-      path: PagesName.hotelPage.path,
-      builder: (BuildContext context, GoRouterState state) {
-        return const HotelPage();
       },
     ),
     GoRoute(

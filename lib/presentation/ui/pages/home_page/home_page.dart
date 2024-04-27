@@ -13,6 +13,7 @@ import 'package:murshid/presentation/bloc/internet/internet_bloc.dart';
 import 'package:murshid/presentation/bloc/location/location_bloc.dart';
 import 'package:murshid/presentation/bloc/permission/permission_cubit.dart';
 import 'package:murshid/presentation/navigation/page_name.dart';
+import 'package:murshid/presentation/navigation/tab_page_name.dart';
 import 'package:murshid/presentation/ui/dialogs/app_settings_dialog.dart';
 import 'package:murshid/presentation/ui/widgets/home/custom_menu_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -64,7 +65,7 @@ class _HomePageState extends State<HomePage> {
         context.push(PagesName.docsPage.path);
         break;
       case 3:
-        context.push(PagesName.hotelPage.path);
+        context.go(TabPagesName.madinahTabView.path);
         break;
       case 4:
         break;
