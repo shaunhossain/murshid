@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:murshid/core/size_config.dart';
 import 'package:murshid/presentation/bloc/bottom_navigation/bottom_navigation_bloc.dart';
@@ -28,10 +29,8 @@ class _MainPageState extends State<MainPage> {
 
   @override
   void initState() {
-
     super.initState();
   }
-
 
   void navRoute(int index) {
     switch (index) {
@@ -66,42 +65,57 @@ class _MainPageState extends State<MainPage> {
     SizeConfig().init(context);
     return BlocConsumer<BottomNavigationBloc, BottomNavigationState>(
         builder: (context, state) {
-          return Scaffold(
-            key: _scaffoldKey,
-            body: widget.navigationShell,
-            bottomNavigationBar: BottomNavigationBar(
-                items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                      icon: Icon(Icons.map_outlined),
-                      activeIcon: Icon(Icons.map),
-                      label: 'Home',
-                  ),
-                  BottomNavigationBarItem(
-                      icon: Icon(Icons.bookmark_outline),
-                      activeIcon: Icon(Icons.bookmark),
-                      label: 'Profile',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.add_circle_outline_outlined),
-                    activeIcon: Icon(Icons.add_circle),
-                    label: 'Setting',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.add_circle_outline_outlined),
-                    activeIcon: Icon(Icons.add_circle),
-                    label: 'Contact',
-                  ),
-                ],
-                currentIndex: state.tabIndex,
-                iconSize: 20,
-                onTap: (index){
-                  context
-                      .read<BottomNavigationBloc>()
-                      .add(BottomNavigationEvent.tabChange(index));
-                },
+      return Scaffold(
+        key: _scaffoldKey,
+        body: widget.navigationShell,
+        bottomNavigationBar: NavigationBar(
+          selectedIndex: state.tabIndex,
+          destinations: [
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                "assets/home_icon.svg",
+                width: 20,
+                height: 20,
+                fit: BoxFit.scaleDown,
+              ),
+              label: 'Home',
             ),
-          );
-        }, listener: (context, state) {
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                "assets/profile_icon.svg",
+                width: 20,
+                height: 20,
+                fit: BoxFit.scaleDown,
+              ),
+              label: 'Profile',
+            ),
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                "assets/setting_icon.svg",
+                width: 20,
+                height: 20,
+                fit: BoxFit.scaleDown,
+              ),
+              label: 'Setting',
+            ),
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                "assets/contact_icon.svg",
+                width: 20,
+                height: 20,
+                fit: BoxFit.scaleDown,
+              ),
+              label: 'Contact',
+            ),
+          ],
+          onDestinationSelected: (index) {
+            context
+                .read<BottomNavigationBloc>()
+                .add(BottomNavigationEvent.tabChange(index));
+          },
+        ),
+      );
+    }, listener: (context, state) {
       state.when(route: navRoute);
     });
   }

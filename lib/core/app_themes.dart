@@ -10,9 +10,24 @@ class AppTheme {
   static final lightTheme = ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
+      splashColor: LightModeColor.primary.color,
+      //hintColor: LightModeColor.unselectedLabel.color,
       primaryColor: LightModeColor.primary.color,
       primaryColorLight: LightModeColor.secondaryLight.color,
       primaryColorDark: LightModeColor.secondaryDark.color,
+      scaffoldBackgroundColor: LightModeColor.primary.color,
+      highlightColor: LightModeColor.highlight.color,
+      canvasColor: LightModeColor.button.color,
+      dividerColor: LightModeColor.secondaryLight.color,
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: LightModeColor.secondaryDark.color,
+        indicatorColor: LightModeColor.secondaryLight.color,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+        labelTextStyle: MaterialStateProperty.all(ibmPlexSansBMStyle(LightModeColor.highlight.color)),
+        iconTheme: MaterialStateProperty.all(IconThemeData(
+          color: LightModeColor.highlight.color
+        ))
+      ),
       dividerTheme: DividerThemeData(
         color: LightModeColor.secondaryDark.color,
         thickness: 1,
@@ -85,10 +100,25 @@ class AppTheme {
 
   static final darkTheme = ThemeData(
       useMaterial3: true,
-      brightness: Brightness.dark,
+      brightness: Brightness.light,
+      splashColor: DarkModeColor.primary.color,
+      //hintColor: DarkModeColor.unselectedLabel.color,
       primaryColor: DarkModeColor.primary.color,
       primaryColorLight: DarkModeColor.secondaryLight.color,
       primaryColorDark: DarkModeColor.secondaryDark.color,
+      scaffoldBackgroundColor: DarkModeColor.primary.color,
+      highlightColor: DarkModeColor.highlight.color,
+      canvasColor: DarkModeColor.button.color,
+      dividerColor: DarkModeColor.secondaryLight.color,
+      navigationBarTheme: NavigationBarThemeData(
+          backgroundColor: DarkModeColor.secondaryDark.color,
+          indicatorColor: DarkModeColor.secondaryLight.color,
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+          labelTextStyle: MaterialStateProperty.all(ibmPlexSansBMStyle(DarkModeColor.highlight.color)),
+          iconTheme: MaterialStateProperty.all(IconThemeData(
+              color: DarkModeColor.highlight.color
+          ))
+      ),
       dividerTheme: DividerThemeData(
         color: DarkModeColor.secondaryDark.color,
         thickness: 1,
