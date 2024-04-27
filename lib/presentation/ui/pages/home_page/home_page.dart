@@ -1,9 +1,9 @@
-import 'dart:math';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:go_router/go_router.dart';
 import 'package:murshid/core/global_scaffold_key.dart';
 import 'package:murshid/core/size_config.dart';
 import 'package:murshid/core/styles.dart';
@@ -12,6 +12,7 @@ import 'package:murshid/injection.dart';
 import 'package:murshid/presentation/bloc/internet/internet_bloc.dart';
 import 'package:murshid/presentation/bloc/location/location_bloc.dart';
 import 'package:murshid/presentation/bloc/permission/permission_cubit.dart';
+import 'package:murshid/presentation/navigation/page_name.dart';
 import 'package:murshid/presentation/ui/dialogs/app_settings_dialog.dart';
 import 'package:murshid/presentation/ui/widgets/home/custom_menu_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -52,56 +53,41 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void routeDirectory({required BuildContext context,required int index}){
+    switch(index){
+      case 0:
+        break;
+      case 1:
+        context.push(PagesName.kafelaPage.path);
+        break;
+      case 2:
+        context.push(PagesName.docsPage.path);
+        break;
+      case 3:
+        context.push(PagesName.hotelPage.path);
+        break;
+      case 4:
+        break;
+      case 5:
+        break;
+      case 6:
+        break;
+      case 7:
+        break;
+      case 8:
+        context.push(PagesName.emergencyPage.path);
+        break;
+      default:
+        break;
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       key: mapPageScaffoldKey,
-      appBar: AppBar(
-        leadingWidth: 200,
-        leading: Container(
-          margin: const EdgeInsets.only(left: 16),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: 48,
-                height: 48,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: Colors.white),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Hello!",
-                      style: ibmPlexSansBSStyle(Colors.white),
-                    ),
-                    Text(
-                      "Shaun Hossain",
-                      style: ibmPlexSansBMStyle(Colors.white),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                "assets/notification_icon.svg",
-                width: 20,
-                height: 20,
-                fit: BoxFit.scaleDown,
-              )),
-        ],
-      ),
       body: MultiBlocListener(
           listeners: [
             BlocListener<InternetBloc, InternetState>(
@@ -258,7 +244,9 @@ class _HomePageState extends State<HomePage> {
                       return CustomMenuItem(
                           name: menuList[index].name,
                           icon: menuList[index].icon,
-                          onTap: () {});
+                          onTap: () {
+                            routeDirectory(context: context, index: index);
+                          });
                     })
               ],
             ),

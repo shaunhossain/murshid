@@ -5,7 +5,9 @@ import 'package:murshid/presentation/navigation/page_name.dart';
 import 'package:murshid/presentation/ui/pages/auth_page/auth_page.dart';
 import 'package:murshid/presentation/ui/pages/contact_page/contact_page.dart';
 import 'package:murshid/presentation/ui/pages/docs_page/docs_page.dart';
+import 'package:murshid/presentation/ui/pages/emergency/emergency_info_page.dart';
 import 'package:murshid/presentation/ui/pages/home_page/home_page.dart';
+import 'package:murshid/presentation/ui/pages/hotel/hotel_page.dart';
 import 'package:murshid/presentation/ui/pages/kafela_page/kafela_page.dart';
 import 'package:murshid/presentation/ui/pages/main_page.dart';
 import 'package:murshid/presentation/ui/pages/profile_page/profile_page.dart';
@@ -111,8 +113,21 @@ final GoRouter router = GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       path: PagesName.kafelaPage.path,
       builder: (BuildContext context, GoRouterState state) {
-        final placeCode = state.extra as String;
-        return KafelaPage(placeCode: placeCode,);
+        return const KafelaPage();
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: PagesName.hotelPage.path,
+      builder: (BuildContext context, GoRouterState state) {
+        return const HotelPage();
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: PagesName.emergencyPage.path,
+      builder: (BuildContext context, GoRouterState state) {
+        return const EmergencyInfoPage();
       },
     ),
   ],

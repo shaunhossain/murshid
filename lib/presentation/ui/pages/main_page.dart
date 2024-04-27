@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:murshid/core/size_config.dart';
 import 'package:murshid/presentation/bloc/bottom_navigation/bottom_navigation_bloc.dart';
+import 'package:murshid/presentation/ui/widgets/custom_action_button.dart';
+import 'package:murshid/presentation/ui/widgets/custom_appbar_title.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({
@@ -67,6 +69,13 @@ class _MainPageState extends State<MainPage> {
         builder: (context, state) {
       return Scaffold(
         key: _scaffoldKey,
+        appBar: AppBar(
+          leadingWidth: 200,
+          leading: const CustomAppbarTitle(),
+          actions: const [
+            CustomActionButton(),
+          ],
+        ),
         body: widget.navigationShell,
         bottomNavigationBar: NavigationBar(
           selectedIndex: state.tabIndex,

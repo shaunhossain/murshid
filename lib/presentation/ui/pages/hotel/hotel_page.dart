@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:murshid/core/styles.dart';
 
-class KafelaPage extends StatefulWidget {
-  const KafelaPage({super.key});
+class HotelPage extends StatefulWidget {
+  const HotelPage({super.key});
 
   @override
-  State<KafelaPage> createState() => _KafelaPageState();
+  State<HotelPage> createState() => _HotelPageState();
 }
 
-class _KafelaPageState extends State<KafelaPage> {
+class _HotelPageState extends State<HotelPage> {
 
   @override
   void initState() {
@@ -21,7 +21,7 @@ class _KafelaPageState extends State<KafelaPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Suggest an edit",
+          "hotel an edit",
           style: ibmPlexSansH6RegularStyle(Colors.white),
         ),
         centerTitle: true,

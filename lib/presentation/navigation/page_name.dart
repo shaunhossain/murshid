@@ -7,6 +7,8 @@ enum PagesName{
   profilePage(title: "Profile Page",path: "/profile-page"),
   docsPage(title: "Docs Page",path: "/docs-page"),
   kafelaPage(title: "Kafela page",path: "/kafela-page"),
+  hotelPage(title: "Hotel page",path: "/hotel-page"),
+  emergencyPage(title: "Emergency page",path: "/emergency-page"),
 
   settingPage(title: "Setting Page",path: "/setting-page"),
 
