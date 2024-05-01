@@ -15,6 +15,8 @@ import 'package:murshid/presentation/bloc/permission/permission_cubit.dart';
 import 'package:murshid/presentation/navigation/page_name.dart';
 import 'package:murshid/presentation/navigation/tab_page_name.dart';
 import 'package:murshid/presentation/ui/dialogs/app_settings_dialog.dart';
+import 'package:murshid/presentation/ui/widgets/custom_action_button.dart';
+import 'package:murshid/presentation/ui/widgets/custom_appbar_title.dart';
 import 'package:murshid/presentation/ui/widgets/home/custom_menu_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -65,7 +67,7 @@ class _HomePageState extends State<HomePage> {
         context.push(PagesName.docsPage.path);
         break;
       case 3:
-        context.go(TabPagesName.madinahTabView.path);
+        context.go("${PagesName.homePage.path}/${HotelTabPagesName.madinahTabView.path}");
         break;
       case 4:
         break;
@@ -89,6 +91,13 @@ class _HomePageState extends State<HomePage> {
     SizeConfig().init(context);
     return Scaffold(
       key: mapPageScaffoldKey,
+      appBar: AppBar(
+        leadingWidth: 200,
+        leading: const CustomAppbarTitle(),
+        actions: const [
+          CustomActionButton(),
+        ],
+      ),
       body: MultiBlocListener(
           listeners: [
             BlocListener<InternetBloc, InternetState>(

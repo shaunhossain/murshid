@@ -18,6 +18,8 @@ import 'package:murshid/presentation/ui/pages/setting_page/setting_page.dart';
 import 'package:murshid/presentation/ui/pages/splash_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorHotelKey =
+GlobalKey<NavigatorState>(debugLabel: 'shellHotel');
 final _shellNavigatorHomeKey =
 GlobalKey<NavigatorState>(debugLabel: 'shellHome');
 final _shellNavigatorProfileKey =
@@ -46,7 +48,37 @@ final GoRouter router = GoRouter(
               builder: (BuildContext context, GoRouterState state) {
                 return const HomePage();
               },
+              routes: [
+                StatefulShellRoute(
+                  builder: (BuildContext context, GoRouterState state,
+                      StatefulNavigationShell navigationShell) {
+                    return navigationShell;
+                  },
+                  navigatorContainerBuilder: (BuildContext context,
+                      StatefulNavigationShell navigationShell, List<Widget> children) {
+                    return HotelPage(
+                        navigationShell: navigationShell, children: children);
+                  },
+                  branches: [
+                    StatefulShellBranch(routes: [
+                      GoRoute(
+                        path:  HotelTabPagesName.madinahTabView.path,
+                        builder: (BuildContext context, GoRouterState state) =>
+                        const MadinahTabView(),
+                      ),
+                    ]),
+                    StatefulShellBranch(routes: [
+                      GoRoute(
+                        path: HotelTabPagesName.meccaTabView.path,
+                        builder: (BuildContext context, GoRouterState state) =>
+                        const MeccaTabView(),
+                      ),
+                    ]),
+                  ],
+                ),
+              ]
             ),
+
           ],
         ),
         StatefulShellBranch(
@@ -88,35 +120,6 @@ final GoRouter router = GoRouter(
             ),
           ],
         ),
-      ],
-    ),
-
-    StatefulShellRoute(
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (BuildContext context, GoRouterState state,
-          StatefulNavigationShell navigationShell) {
-        return navigationShell;
-      },
-      navigatorContainerBuilder: (BuildContext context,
-          StatefulNavigationShell navigationShell, List<Widget> children) {
-        return HotelPage(
-            navigationShell: navigationShell, children: children);
-      },
-      branches: [
-        StatefulShellBranch(routes: [
-          GoRoute(
-            path: TabPagesName.madinahTabView.path,
-            builder: (BuildContext context, GoRouterState state) =>
-            const MadinahTabView(),
-          ),
-        ]),
-        StatefulShellBranch(routes: [
-          GoRoute(
-            path: TabPagesName.meccaTabView.path,
-            builder: (BuildContext context, GoRouterState state) =>
-            const MeccaTabView(),
-          ),
-        ]),
       ],
     ),
 

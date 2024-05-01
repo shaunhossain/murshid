@@ -35,31 +35,10 @@ class _MainPageState extends State<MainPage> {
   }
 
   void navRoute(int index) {
-    switch (index) {
-      case 0:
-        widget.navigationShell.goBranch(
-          index,
-          initialLocation: index == widget.navigationShell.currentIndex,
-        );
-        break;
-      case 1:
-        widget.navigationShell.goBranch(
-          index,
-          initialLocation: index == widget.navigationShell.currentIndex,
-        );
-        break;
-      case 2:
-        widget.navigationShell.goBranch(
-          index,
-          initialLocation: index == widget.navigationShell.currentIndex,
-        );
-      default:
-        widget.navigationShell.goBranch(
-          0,
-          initialLocation: true,
-        );
-        break;
-    }
+    widget.navigationShell.goBranch(
+      index,
+      initialLocation: index == widget.navigationShell.currentIndex,
+    );
   }
 
   @override
@@ -69,13 +48,6 @@ class _MainPageState extends State<MainPage> {
         builder: (context, state) {
       return Scaffold(
         key: _scaffoldKey,
-        appBar: AppBar(
-          leadingWidth: 200,
-          leading: const CustomAppbarTitle(),
-          actions: const [
-            CustomActionButton(),
-          ],
-        ),
         body: widget.navigationShell,
         bottomNavigationBar: NavigationBar(
           selectedIndex: state.tabIndex,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:murshid/presentation/ui/widgets/custom_action_button.dart';
+import 'package:murshid/presentation/ui/widgets/custom_appbar_title.dart';
 import 'package:murshid/presentation/ui/widgets/custom_item_view.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -6,8 +8,15 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Padding(
+    return Scaffold(
+      appBar: AppBar(
+        leadingWidth: 200,
+        leading: const CustomAppbarTitle(),
+        actions: const [
+          CustomActionButton(),
+        ],
+      ),
+      body: const Padding(
         padding: EdgeInsets.all(16.0),
         child: CustomScrollView(
           slivers: [

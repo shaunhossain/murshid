@@ -16,7 +16,6 @@ class HotelPage extends StatefulWidget {
 
 class _HotelPageState extends State<HotelPage> with SingleTickerProviderStateMixin {
 
-  @override
   late final TabController _tabController = TabController(
       length: widget.children.length,
       vsync: this,
@@ -40,7 +39,7 @@ class _HotelPageState extends State<HotelPage> with SingleTickerProviderStateMix
       child: Container(
         width: double.maxFinite,
         alignment: Alignment.center,
-        child: Text(TabPagesName.values[i].title),
+        child: Text(HotelTabPagesName.values[i].title),
       ),
     ))
         .toList();

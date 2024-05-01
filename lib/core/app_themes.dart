@@ -28,6 +28,21 @@ class AppTheme {
           color: LightModeColor.highlight.color
         ))
       ),
+      tabBarTheme: TabBarTheme(
+        labelColor: LightModeColor.secondaryLight.color,
+        labelStyle: ibmPlexSansBLStyle(LightModeColor.secondaryLight.color),
+        unselectedLabelColor: LightModeColor.secondaryDark.color,
+        unselectedLabelStyle:
+        ibmPlexSansBLRegularStyle(LightModeColor.secondaryLight.color),
+        labelPadding: EdgeInsets.zero,
+        indicator: BoxDecoration(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(8.0),
+            ),
+            color: LightModeColor.highlight.color),
+        indicatorSize: TabBarIndicatorSize.tab,
+        dividerColor: Colors.transparent,
+      ),
       dividerTheme: DividerThemeData(
         color: LightModeColor.secondaryDark.color,
         thickness: 1,
