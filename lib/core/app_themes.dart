@@ -31,9 +31,9 @@ class AppTheme {
       tabBarTheme: TabBarTheme(
         labelColor: LightModeColor.secondaryLight.color,
         labelStyle: ibmPlexSansBLStyle(LightModeColor.secondaryLight.color),
-        unselectedLabelColor: LightModeColor.secondaryDark.color,
+        unselectedLabelColor: LightModeColor.highlight.color,
         unselectedLabelStyle:
-        ibmPlexSansBLRegularStyle(LightModeColor.secondaryLight.color),
+        ibmPlexSansBLRegularStyle(LightModeColor.highlight.color),
         labelPadding: EdgeInsets.zero,
         indicator: BoxDecoration(
             borderRadius: const BorderRadius.all(
